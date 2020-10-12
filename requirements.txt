@@ -1,0 +1,5 @@
+numpy==1.18.5
+opencv_contrib_python==4.2.0.34
+Flask==1.1.2
+mutagen==1.44.0
+Pillow==7.2.0
