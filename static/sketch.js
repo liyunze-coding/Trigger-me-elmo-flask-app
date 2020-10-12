@@ -85,7 +85,7 @@ function draw() {
         } else if (response.audio == "south"){
           var song = south;
         }
-        document.getElementById('race').innerHTML = "<p>Asian: "+response.race.asian+"<br><br>Black: "+response.race.black+"<br><br>Hispanic: "+response['race']['latino hispanic']+"<br><br>White: "+response.race.white+"<br><br>Race: "+response.dominant_race+"</p>";
+        document.getElementById('race').innerHTML = "<p>Asian: "+response.race.asian+"<br>Black: "+response.race.black+"<br>Hispanic: "+response['race']['latino hispanic']+"<br>White: "+response.race.white+"<br>Indian: "+response.race.indian+"<br>Middle eastern: "+response['race']['middle eastern']+"<br>Race: "+response.dominant_race+"</p>";
         song.play();
 
         setTimeout(function pausing(){
