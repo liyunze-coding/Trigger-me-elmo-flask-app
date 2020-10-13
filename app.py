@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, url_for
-import base64, cv2, logging
+import base64, logging
 import numpy as np
 from deepface import DeepFace
 from glob import glob
