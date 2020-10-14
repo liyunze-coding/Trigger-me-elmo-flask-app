@@ -5,6 +5,7 @@ let other = [];
 var video;
 var button;
 var snapshots = [];
+var dur;
 
 function preload() {
   //asian
@@ -41,7 +42,6 @@ function setup() {
   button = createButton('snap');
   button.position(0,250);
   image(elmo2,400,155);
-  //song.play();
   // create a new Amplitude analyzer
   analyzer = new p5.Amplitude();
   // Patch the input to an volume analyzer
@@ -66,33 +66,29 @@ function draw() {
     data : {"photo": data_uri},
     success : function(response){
         console.log(response);
-        if (response.audio == "assembly_line"){
-          var song = assembly_line;
-        } else if (response.audio == "puppet"){
-          var song = puppet;
-        } else if (response.audio == "iphones"){
-          var song = iphones;
-        } else if (response.audio == "no_idea"){
-          var song = no_idea;
-        } else if (response.audio == "black"){
-          var song = black;
-        } else if (response.audio == "hispanic"){
-          var song = hispanic;
-        } else if (response.audio == "what"){
-          var song = what;
-        } else if (response.audio == "meth"){
-          var song = meth;
-        } else if (response.audio == "south"){
-          var song = south;
-        }
-        document.getElementById('race').innerHTML = "<p>Asian: "+response.race.asian+"<br>Black: "+response.race.black+"<br>Hispanic: "+response['race']['latino hispanic']+"<br>White: "+response.race.white+"<br>Indian: "+response.race.indian+"<br>Middle eastern: "+response['race']['middle eastern']+"<br>Race: "+response.dominant_race+"</p>";
+
+        document.getElementById('race').innerHTML = "<p>Asian: "+response.race.asian+"<br>Black: "+response.race.black+"<br>Hispanic: "+response['race']['latino hispanic']+"<br>White: "+response.race.white+"<br>Indian: "+response.race.indian+"<br>Middle eastern: "+response['race']['middle eastern']+"<br><br>Race: "+response.dominant_race+"</p>";
+
+        if (response.dominant_race == "asian"){
+          song = asian[Math.floor(Math.random() * asian.length)];
+        } else if (response.dominant_race == "black"){
+          song = black;
+        } else if (response.dominant_race == "latino hispanic"){
+          song = hispanic;
+        } else if (response.dominant_race == "white"){
+          song = white[Math.floor(Math.random() * white.length)];
+        } else if (response.dominant_race == "?"){
+          song = other[Math.floor(Math.random() * other.length)];
+        } 
+
         song.play();
+        var dur = song.duration();
 
         setTimeout(function pausing(){
           button.show();
           document.getElementById('race').innerHTML = "<p></p>";
           video.show();
-        },response.duration)
+        },dur*1000)
         
       }
     })
@@ -111,5 +107,3 @@ function draw() {
 function touchStarted() {
   getAudioContext().resume()
 }
-
-
