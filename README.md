@@ -37,5 +37,7 @@ Steps on how to use the Trigger Me Elmo flask app:
 _________________________________________________________________________________
 
 Credits to Michael Reeves for inspiring this project:
+
 Video that started this all: https://www.youtube.com/watch?v=Q8QlNuTUe4M&ab_channel=MichaelReeves
+
 Sound source: https://github.com/michaelreeves08/elmo-core/tree/master/Sound
