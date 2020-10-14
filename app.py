@@ -2,11 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import base64, logging
 import numpy as np
 from deepface import DeepFace
-from glob import glob
-from random import choice
 from PIL import Image
 from io import BytesIO
-from mutagen.mp3 import MP3
 import subprocess
 
 app = Flask(__name__)
